@@ -29,6 +29,10 @@
 	<script type="text/javascript">
 		$('input').click(function(){
 			$.ajax({
+				cache: false,
+				type: 'post',
+				timeout: 3000,
+				type: 'html',
 				url: 'arquivo.html',  //url solicitada
 				beforeSend: function(){
 					$('.loader').css({display:'block'});
