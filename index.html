@@ -4,6 +4,9 @@
 		<title>Ajax fácil com jQuery</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<style type="text/css">
+			br{
+				clear: both;
+			}
 			div {
 	            width: 600px;
 	            height: 600px;
@@ -15,21 +18,29 @@
 		</style>
 	</head>
 	<body>
-		<img src="./img/loader.gif" class="loader" alt="loader" />
+		<span class="loader">
+			<img src="img/loader.gif" alt="loader" />
+			<br /><br />
+		</span>
 		<input type="button" value="AJAX!">
 		<div></div>
 	</body>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
 	<script type="text/javascript">
-		$.ajax({
-			url: 'conteudo.html',  //url solicitada
-			beforeSend: function(){
-				$('.loader').css({display:'block'});
-			},
-			success: function(data){ //o HTML é retornado em 'data'
-				$('div').html(data);
-				alert(data); //Se sucesso um alert com o conteúdo retornado
-			}
+		$('input').click(function(){
+			$.ajax({
+				url: 'arquivo.html',  //url solicitada
+				beforeSend: function(){
+					$('.loader').css({display:'block'});
+				},
+				success: function(data){ //o HTML é retornado em 'data'
+					$('div').html(data);
+					//alert(data); //Se sucesso um alert com o conteúdo retornado
+				},
+				complete: function(){
+					$('.loader').css({display:'none'});
+				}
+			});
 		});
 	</script>
 </html>
